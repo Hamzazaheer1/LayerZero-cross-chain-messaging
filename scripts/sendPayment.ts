@@ -9,7 +9,7 @@ async function main() {
     const senders: Record<string, string> = {
         sepolia: '0x5a4C3D3f3e20be18F461Fc4a5062bE4f4EeC2351',
         bsctest: '0x920543F4D19f89EB346a0f257b85ef9c76147BD4',
-        amoy: '0xe7dE3526464F4674d9D1444F3c4F10424a41E0E7',
+        amoy: '0x920543F4D19f89EB346a0f257b85ef9c76147BD4',
     }
 
     const activeNetwork = network.name // comes from `--network xxx`

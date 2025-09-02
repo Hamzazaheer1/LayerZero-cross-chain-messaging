@@ -13,10 +13,10 @@ const bscSender: OmniPointHardhat = {
     contractName: 'PaymentSender',
 }
 
-// const amoySender: OmniPointHardhat = {
-//     eid: EndpointId.AMOY_V2_TESTNET,
-//     contractName: 'PaymentSender',
-// }
+const amoySender: OmniPointHardhat = {
+    eid: EndpointId.AMOY_V2_TESTNET,
+    contractName: 'PaymentSender',
+}
 
 const amoyLedger: OmniPointHardhat = {
     eid: EndpointId.AMOY_V2_TESTNET,
@@ -53,7 +53,7 @@ const EVM_ENFORCED_OPTIONS: OAppEnforcedOption[] = [
 const pathways: TwoWayConfig[] = [
     // [sepoliaSender, amoyLedger, [[], []], [1, 1], [[], []]],
     [bscSender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]],
-    // [amoySender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]],
+    [amoySender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]],
 ]
 
 export default async function () {
@@ -63,7 +63,7 @@ export default async function () {
         contracts: [
             // { contract: sepoliaSender },
             { contract: bscSender },
-            // { contract: amoySender },
+            { contract: amoySender },
             { contract: amoyLedger },
         ],
         connections,
