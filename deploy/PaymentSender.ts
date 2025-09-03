@@ -4,6 +4,13 @@ import { type DeployFunction } from 'hardhat-deploy/types'
 const contractName = 'PaymentSender'
 
 const deploy: DeployFunction = async (hre) => {
+    // Only deploy PaymentSender on Sepolia, BSC and Amoy networks
+    const allowedNetworks = ['sepolia', 'bsctest', 'amoy']
+    if (!allowedNetworks.includes(hre.network.name)) {
+        console.log(`Skipping ${contractName} deployment on ${hre.network.name} - not in allowed networks`)
+        return
+    }
+
     const { getNamedAccounts, deployments } = hre
     const { deploy } = deployments
     const { deployer } = await getNamedAccounts()

@@ -54,15 +54,15 @@ const config: HardhatUserConfig = {
         ],
     },
     networks: {
-        // sepolia: {
-        //     eid: EndpointId.SEPOLIA_V2_TESTNET,
-        //     url: process.env.RPC_URL_SEPOLIA || 'https://ethereum-sepolia-rpc.publicnode.com',
-        //     accounts,
-        //     timeout: 60000, // 60 seconds
-        //     httpHeaders: {
-        //         'User-Agent': 'hardhat',
-        //     },
-        // },
+        sepolia: {
+            eid: EndpointId.SEPOLIA_V2_TESTNET,
+            url: process.env.RPC_URL_SEPOLIA || 'https://ethereum-sepolia-rpc.publicnode.com',
+            accounts,
+            timeout: 60000, // 60 seconds
+            httpHeaders: {
+                'User-Agent': 'hardhat',
+            },
+        },
         bsctest: {
             eid: EndpointId.BSC_V2_TESTNET,
             url: process.env.BSC_RPC || 'https://bsc-testnet.publicnode.com',

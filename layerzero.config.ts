@@ -3,10 +3,10 @@ import { ExecutorOptionType } from '@layerzerolabs/lz-v2-utilities'
 import { TwoWayConfig, generateConnectionsConfig } from '@layerzerolabs/metadata-tools'
 import { OAppEnforcedOption, OmniPointHardhat } from '@layerzerolabs/toolbox-hardhat'
 
-// const sepoliaSender: OmniPointHardhat = {
-//     eid: EndpointId.SEPOLIA_V2_TESTNET,
-//     contractName: 'PaymentSender',
-// }
+const sepoliaSender: OmniPointHardhat = {
+    eid: EndpointId.SEPOLIA_V2_TESTNET,
+    contractName: 'PaymentSender',
+}
 
 const bscSender: OmniPointHardhat = {
     eid: EndpointId.BSC_V2_TESTNET,
@@ -51,9 +51,9 @@ const EVM_ENFORCED_OPTIONS: OAppEnforcedOption[] = [
 // ]
 
 const pathways: TwoWayConfig[] = [
-    // [sepoliaSender, amoyLedger, [[], []], [1, 1], [[], []]],
+    [sepoliaSender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]],
     [bscSender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]],
-    [amoySender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]],
+    // [amoySender, amoyLedger, [[], []], [1, 1], [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS]], // No need to connect Amoy to Amoy as we can directly call the ledger contract
 ]
 
 export default async function () {
@@ -61,7 +61,7 @@ export default async function () {
     const connections = await generateConnectionsConfig(pathways)
     return {
         contracts: [
-            // { contract: sepoliaSender },
+            { contract: sepoliaSender },
             { contract: bscSender },
             { contract: amoySender },
             { contract: amoyLedger },
